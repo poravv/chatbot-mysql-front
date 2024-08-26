@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "vendelo-front": {
+    "front-view-chatbot": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/vendelo-front",
+            "outputPath": "dist/front-view-chatbot",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "vendelo-front:build:production"
+              "browserTarget": "front-view-chatbot:build:production"
             },
             "development": {
-              "browserTarget": "vendelo-front:build:development"
+              "browserTarget": "front-view-chatbot:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "vendelo-front:build"
+            "browserTarget": "front-view-chatbot:build"
           }
         },
         "test": {

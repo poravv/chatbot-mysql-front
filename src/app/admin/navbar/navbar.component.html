@@ -1,8 +1,11 @@
 <nz-layout>
   <nz-header>
-    <div [routerLink]="'home'" style="cursor: pointer;" class="logo"></div>
+    
+    <div [routerLink]="'home'" style="cursor: pointer;" class="logo">
+      Chatbot
+    </div>
     <ul nz-menu nzTheme="dark" nzMode="horizontal" class="header-menu">
-      <li (click)="logout()" nz-menu-item>logout</li>
+      <li (click)="logout()" nz-menu-item>Cerrar sesion</li>
     </ul>
   </nz-header>
   <nz-content class="outer-content">
@@ -12,11 +15,11 @@
       <ul nz-menu nzMode="inline" class="sider-menu">
         <li nz-menu-item [routerLink]="'home'">
           <span nz-icon nzType="home"></span>
-          <span>Home</span>
+          <span>Inicio</span>
         </li>
-        <li nz-submenu nzTitle="Chatbot" nzIcon="setting">
+        <li nz-submenu nzTitle="Pedidos" nzIcon="setting">
           <ul>
-            <li nz-menu-item [routerLink]="'pedido/list'">Pedidos</li>
+            <li nz-menu-item [routerLink]="'pedido/list'">Lista</li>
           </ul>
         </li>
       </ul>

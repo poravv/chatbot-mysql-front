@@ -4,6 +4,10 @@
     background: rgba(255, 255, 255, 0.2);
     margin: 16px 28px 16px 0;
     float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
   }
 
   .header-menu {

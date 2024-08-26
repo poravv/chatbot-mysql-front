@@ -14,7 +14,6 @@ export class ContentHeaderComponent {
   @Input() dataExport!: any[];
   @Input() dataExportTitle!: string;
   @Input() buttonTitle!: string;
-  @Input() masivo!: boolean;
   @Input() type!: string;
 
   constructor(private exportsService:ExportsService) { }
