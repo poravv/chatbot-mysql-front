@@ -2,9 +2,10 @@
 FROM node:14-alpine as build
 WORKDIR /app
 COPY package.json package-lock.json ./
+RUN npm install -g @angular/cli  # Instalar Angular CLI globalmente
 RUN npm install
 COPY . .
-RUN ng build
+RUN ng build --prod
 
 # Etapa 2: Servir la aplicación con Nginx
 FROM nginx:alpine
