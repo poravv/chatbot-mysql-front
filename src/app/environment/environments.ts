@@ -1,7 +1,7 @@
 export const environment = {
     production: false,
     apiUrl: 'https://kc.mindtechpy.net/admin/realms/realm_pedidos',
-    serverUrl: 'http://localhost:3002/chatbot/api',
+    serverUrl: 'https://back.mindtechpy.net/chatbot/chatbot/api',
     keycloakConfig: {
         clientId:"cli-pedidos",
         issuer: 'https://kc.mindtechpy.net/realms/realm_pedidos',
