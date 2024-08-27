@@ -5,4 +5,4 @@ services:
     image: chatbot-front-suitex
     container_name: contenedor-chatbot-suitex
     ports:
-      - "4001:4200"
+      - "4001:4000"
