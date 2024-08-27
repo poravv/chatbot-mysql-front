@@ -2,5 +2,7 @@ version: '3.8'
 services:
   web:
     build: .
+    image: chatbot-front-suitex
+    container_name: contenedor-chatbot-suitex
     ports:
       - "4001:4200"
