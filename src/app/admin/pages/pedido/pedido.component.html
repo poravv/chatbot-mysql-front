@@ -18,6 +18,7 @@
         <th nzLeft nzWidth="50px"></th>
         <th>Cliente</th>
         <th>Ruc</th>
+        <th>Telefono</th>
         <th>Fecha insercion</th>
         <th>Fecha procesada</th>
         <th>Estado</th>
@@ -31,6 +32,7 @@
             (nzExpandChange)="onExpandChange(data.idpedido, $event)"></td>
           <td>{{ data.cliente }}</td>
           <td>{{ data.ruc }}</td>
+          <td>{{ data.numero }}</td>
           <td>{{ data.fecha_insercion }}</td>
           <td>{{ data.fecha_proceso }}</td>
           <td>{{ data.estado }}</td>
