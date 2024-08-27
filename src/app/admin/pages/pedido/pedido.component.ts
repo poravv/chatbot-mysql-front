@@ -13,6 +13,7 @@ export interface PedidoModel {
   idpedido: number;
   cliente: string;
   ruc: string;
+  numero: string;
   fecha_insercion: Date;
   fecha_proceso: Date;
   estado:string;
