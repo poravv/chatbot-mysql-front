@@ -4,7 +4,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
-RUN npm run build
+RUN ng build
 
 # Etapa 2: Servir la aplicación con Nginx
 FROM nginx:alpine
