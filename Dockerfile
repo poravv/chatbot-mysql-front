@@ -8,6 +8,10 @@ COPY . .
 RUN ng build
 
 # Etapa 2: Servir la aplicación con Nginx
-FROM nginx:alpine
+FROM node:14-alpine
+WORKDIR /app
 COPY --from=build /app/dist/front-view-chatbot /usr/share/nginx/html
-EXPOSE 4001
+COPY --from=build /app/dist/front-view-chatbot /app
+RUN npm install -g http-server
+EXPOSE 4000
+CMD ["http-server", "/app", "-p", "4000"]
