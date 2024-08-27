@@ -1,9 +1,9 @@
 # Etapa 1: Construcción de la aplicación Angular
-FROM node:14-alpine as build
+FROM node:20-alpine as build
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install -g @angular/cli  # Instalar Angular CLI globalmente
-RUN npm install
+RUN npm install --legacy-peer-dependencies
 COPY . .
 RUN ng build
 
