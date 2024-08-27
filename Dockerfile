@@ -9,5 +9,5 @@ RUN ng build
 
 # Etapa 2: Servir la aplicación con Nginx
 FROM nginx:alpine
-COPY --from=build /app/dist/tu-nombre-de-aplicacion-angular /usr/share/nginx/html
+COPY --from=build /app/dist/front-view-chatbot /usr/share/nginx/html
 EXPOSE 4001
