@@ -80,10 +80,24 @@ export class PedidoComponent implements OnInit {
       }
     });
   }
+  
+  pendinRow(idpedido: number): void {
+    const index = this.listOfData.findIndex(item => item.idpedido === idpedido);
+    this.listOfData[index].estado="Pendiente"
+    //console.log(this.listOfData[index]);
+    this.pedidoService.updatePedido(this.listOfData[index]).subscribe((response) => {
+      //console.log(response);
+      if (response.mensaje == 'error') {
+        this.messageService.createMessage('error', "Error al anular");
+      } else {
+        this.messageService.createMessage('success', "Anulado satisfactoriamente");
+      }
+    });
+  }
 
   anulaRow(idpedido:number):void {
     const index = this.listOfData.findIndex(item => item.idpedido === idpedido);
-    this.listOfData[index].estado="Anulado"
+    this.listOfData[index].estado="Cancelado"
     //console.log(this.listOfData[index]);
     this.pedidoService.updatePedido(this.listOfData[index]).subscribe((response) => {
       //console.log(response);
