@@ -16,7 +16,7 @@ export interface PedidoModel {
   numero: string;
   fecha_insercion: Date;
   fecha_proceso: Date;
-  estado:string;
+  estado: string;
   DetPedidos: DetPedidosModel[]
 }
 
@@ -28,7 +28,7 @@ export interface PedidoModel {
 
 export class PedidoComponent implements OnInit {
 
-  constructor(private pedidoService: PedidoService, private messageService: MessageService,private msg: NzMessageService) { }
+  constructor(private pedidoService: PedidoService, private messageService: MessageService, private msg: NzMessageService) { }
 
   listOfData: PedidoModel[] = [];
   export: PedidoModel[] = [];
@@ -80,10 +80,11 @@ export class PedidoComponent implements OnInit {
       }
     });
   }
-  
+
   pendinRow(idpedido: number): void {
     const index = this.listOfData.findIndex(item => item.idpedido === idpedido);
-    this.listOfData[index].estado="Pendiente"
+    this.listOfData[index].estado = "Pendiente";
+    this.listOfData[index].fecha_proceso = new Date();
     //console.log(this.listOfData[index]);
     this.pedidoService.updatePedido(this.listOfData[index]).subscribe((response) => {
       //console.log(response);
@@ -95,9 +96,10 @@ export class PedidoComponent implements OnInit {
     });
   }
 
-  anulaRow(idpedido:number):void {
+  anulaRow(idpedido: number): void {
     const index = this.listOfData.findIndex(item => item.idpedido === idpedido);
-    this.listOfData[index].estado="Cancelado"
+    this.listOfData[index].estado = "Cancelado";
+    this.listOfData[index].fecha_proceso = new Date();
     //console.log(this.listOfData[index]);
     this.pedidoService.updatePedido(this.listOfData[index]).subscribe((response) => {
       //console.log(response);
@@ -109,9 +111,10 @@ export class PedidoComponent implements OnInit {
     });
   }
 
-  procesadoRow(idpedido:number):void {
+  procesadoRow(idpedido: number): void {
     const index = this.listOfData.findIndex(item => item.idpedido === idpedido);
-    this.listOfData[index].estado="Procesado"
+    this.listOfData[index].estado = "Procesado"
+    this.listOfData[index].fecha_proceso = new Date();
     //console.log(this.listOfData[index]);
     this.pedidoService.updatePedido(this.listOfData[index]).subscribe((response) => {
       //console.log(response);
@@ -121,6 +124,14 @@ export class PedidoComponent implements OnInit {
         this.messageService.createMessage('success', "Procesado satisfactoriamente");
       }
     });
+  }
+
+  convertirFecha(fecha: Date) {
+    const date = new Date(fecha);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
   }
 
   ngOnInit(): void {
