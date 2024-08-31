@@ -1,0 +1,167 @@
+<app-content-header [title]="'Consulta'" [exportExcel]="true" [dataExport]="listOfDisplayData"
+  [dataExportTitle]="'consulta'" [type]="'consulta'">
+</app-content-header>
+
+<div style="padding: 10px;">
+  <nz-input-group [nzSuffix]="suffixIconSearch">
+    <input type="text" #searchText nz-input placeholder="Buscador" Green (keyup)="searchTotal(searchText.value)" />
+  </nz-input-group>
+  <ng-template #suffixIconSearch>
+    <i nz-icon nzType="search"></i>
+  </ng-template>
+</div>
+
+<nz-tabset>
+  <nz-tab nzTitle="Pendientes">
+    <div style="padding: 10px;">
+
+      <nz-table [nzScroll]="{ x: '1200px',y: '400px' }" #editRowTable nzBordered [nzData]="listOfDisplayData"
+        nzTableLayout="fixed" nzSize="middle" nzShowPagination nzShowSizeChanger>
+        <thead>
+          <tr>
+            <!--th nzWidth="30%">COLOR1</th-->
+            
+            <th>Nombre y Apellido</th>
+            <th>Documento</th>
+            <th>Telefono</th>
+            <th>Detalle</th>
+            <th>Tipo</th>
+            <th>Consulta</th>
+            <th>Fecha insercion</th>
+            <th>Fecha procesada</th>
+            <th>Estado</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let data of editRowTable.data">
+            <ng-container *ngIf="data.estado === 'Pendiente'">
+              <tr>
+                <td>{{ data.nombre_apellido }}</td>
+                <td>{{ data.documento }}</td>
+                <td>{{ data.numero }}</td>
+                <td>{{ data.descripcion }}</td>
+                <td>{{ data.tipo }}</td>
+                <td>{{ data.consulta }}</td>
+                <td>{{ convertirFecha(data.fecha_insercion) }}</td>
+                <td>{{ convertirFecha(data.fecha_procesado) }}</td>
+                <td>{{ data.estado }}</td>
+                <td>
+                  <a style="padding: 4px;" nz-popconfirm nzPopconfirmTitle="Seguro que se encuentra pendiente?"
+                    (nzOnConfirm)="pendinRow(data.idconsulta)">Pendiente</a>
+                  <br />
+                  <a style="padding: 4px;" nz-popconfirm nzPopconfirmTitle="Seguro que desea Cancelar?"
+                    (nzOnConfirm)="anulaRow(data.idconsulta)">Cancelado</a>
+                  <br />
+                  <a style="padding: 4px;" nz-popconfirm nzPopconfirmTitle="Seguro que ya esta procesado?"
+                    (nzOnConfirm)="procesadoRow(data.idconsulta)">Procesado</a>
+                </td>
+              </tr>
+            </ng-container>
+          </ng-container>
+        </tbody>
+      </nz-table>
+    </div>
+  </nz-tab>
+  <nz-tab nzTitle="Procesados">
+    <div style="padding: 10px;">
+      <nz-table [nzScroll]="{ x: '1200px',y: '400px' }" #editRowTable nzBordered [nzData]="listOfDisplayData"
+        nzTableLayout="fixed" nzSize="middle" nzShowPagination nzShowSizeChanger>
+        <thead>
+          <tr>
+            <!--th nzWidth="30%">COLOR1</th-->
+            
+            <th>Nombre y Apellido</th>
+            <th>Documento</th>
+            <th>Telefono</th>
+            <th>Detalle</th>
+            <th>Tipo</th>
+            <th>Consulta</th>
+            <th>Fecha insercion</th>
+            <th>Fecha procesada</th>
+            <th>Estado</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let data of editRowTable.data">
+            <ng-container *ngIf="data.estado === 'Procesado'">
+              <tr>
+                <td>{{ data.nombre_apellido }}</td>
+                <td>{{ data.documento }}</td>
+                <td>{{ data.numero }}</td>
+                <td>{{ data.descripcion }}</td>
+                <td>{{ data.tipo }}</td>
+                <td>{{ data.consulta }}</td>
+                <td>{{ convertirFecha(data.fecha_insercion) }}</td>
+                <td>{{ convertirFecha(data.fecha_procesado) }}</td>
+                <td>{{ data.estado }}</td>
+                <td>
+                  <a style="padding: 4px;" nz-popconfirm nzPopconfirmTitle="Seguro que se encuentra pendiente?"
+                    (nzOnConfirm)="pendinRow(data.idconsulta)">Pendiente</a>
+                  <br />
+                  <a style="padding: 4px;" nz-popconfirm nzPopconfirmTitle="Seguro que desea Cancelar?"
+                    (nzOnConfirm)="anulaRow(data.idconsulta)">Cancelado</a>
+                  <br />
+                  <a style="padding: 4px;" nz-popconfirm nzPopconfirmTitle="Seguro que ya esta procesado?"
+                    (nzOnConfirm)="procesadoRow(data.idconsulta)">Procesado</a>
+                </td>
+              </tr>
+            </ng-container>
+
+          </ng-container>
+        </tbody>
+      </nz-table>
+    </div>
+  </nz-tab>
+  <nz-tab nzTitle="Cancelados">
+    <div style="padding: 10px;">
+      <nz-table [nzScroll]="{ x: '1200px',y: '400px' }" #editRowTable nzBordered [nzData]="listOfDisplayData"
+        nzTableLayout="fixed" nzSize="middle" nzShowPagination nzShowSizeChanger>
+        <thead>
+          <tr>
+            <!--th nzWidth="30%">COLOR1</th-->
+            
+            <th>Nombre y Apellido</th>
+            <th>Documento</th>
+            <th>Telefono</th>
+            <th>Detalle</th>
+            <th>Tipo</th>
+            <th>Consulta</th>
+            <th>Fecha insercion</th>
+            <th>Fecha procesada</th>
+            <th>Estado</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let data of editRowTable.data">
+            <ng-container *ngIf="data.estado === 'Cancelado'">
+              <tr>
+                <td>{{ data.nombre_apellido }}</td>
+                <td>{{ data.documento }}</td>
+                <td>{{ data.numero }}</td>
+                <td>{{ data.descripcion }}</td>
+                <td>{{ data.tipo }}</td>
+                <td>{{ data.consulta }}</td>
+                <td>{{ convertirFecha(data.fecha_insercion) }}</td>
+                <td>{{ convertirFecha(data.fecha_procesado) }}</td>
+                <td>{{ data.estado }}</td>
+                <td>
+                  <a style="padding: 4px;" nz-popconfirm nzPopconfirmTitle="Seguro que se encuentra pendiente?"
+                    (nzOnConfirm)="pendinRow(data.idconsulta)">Pendiente</a>
+                  <br />
+                  <a style="padding: 4px;" nz-popconfirm nzPopconfirmTitle="Seguro que desea Cancelar?"
+                    (nzOnConfirm)="anulaRow(data.idconsulta)">Cancelado</a>
+                  <br />
+                  <a style="padding: 4px;" nz-popconfirm nzPopconfirmTitle="Seguro que ya esta procesado?"
+                    (nzOnConfirm)="procesadoRow(data.idconsulta)">Procesado</a>
+                </td>
+              </tr>
+            </ng-container>
+          </ng-container>
+        </tbody>
+      </nz-table>
+    </div>
+  </nz-tab>
+</nz-tabset>

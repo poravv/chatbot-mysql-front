@@ -17,9 +17,12 @@
           <span nz-icon nzType="home"></span>
           <span>Inicio</span>
         </li>
-        <li nz-submenu nzTitle="Pedidos" nzIcon="setting">
+        <li nz-submenu nzTitle="Chatbot" nzIcon="setting">
           <ul>
-            <li nz-menu-item [routerLink]="'pedido/list'">Lista</li>
+            <li nz-menu-item [routerLink]="'consulta/list'">Consultas</li>
+          </ul>
+          <ul>
+            <li nz-menu-item [routerLink]="'pedido/list'">Pedidos</li>
           </ul>
         </li>
       </ul>

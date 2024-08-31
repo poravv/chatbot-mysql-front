@@ -19,6 +19,7 @@ import { TitleButtonComponent } from './admin/utils/title-button/title-button.co
 import { ContentHeaderComponent } from './admin/utils/content-header/content-header.component';
 import { homeComponent } from './admin/pages/home/home.component';
 import { PedidoComponent } from './admin/pages/pedido/pedido.component';
+import { ConsultaComponent } from './admin/pages/consulta/consulta.component';
 registerLocaleData(es);
 
 export const authCodeFlowConfig: AuthConfig = {
@@ -48,7 +49,8 @@ function initializeOAuth(oauthService: OAuthService): Promise<void> {
     homeComponent,
     TitleButtonComponent,
     ContentHeaderComponent,
-    PedidoComponent
+    PedidoComponent,
+    ConsultaComponent
   ],
   imports: [
     BrowserModule,
